@@ -1,6 +1,6 @@
 ---
 name: evolve-visual-style
-description: Explicit-invocation-only visual style evolution that creates and ranks actual visual demos for websites, web pages, product interfaces, landing pages, posters, illustrations, and other images. Invoke only when the current user request explicitly contains `$evolve-visual-style`. Never activate implicitly from a natural-language request about visual design, website creation or restyling, image creation or editing, mood boards, art direction, or adjacent work. When explicitly invoked, research style possibilities, extract relevant style considerations, generate demo images or simple static demo pages, evolve them with mutation and crossover, rank them visually when evaluators support vision, and for web tasks build a simple static gallery containing every generated demo. Create proofs of style, not a production website or complete application.
+description: "Explicit-invocation-only visual style evolution that creates and ranks actual visual demos for websites, web pages, product interfaces, landing pages, posters, illustrations, and other images. Invoke only through the host's explicit skill mechanism: `$evolve-visual-style` in Codex or `/evolve-visual-style` in Claude Code. Never activate implicitly from a natural-language request about visual design, website creation or restyling, image creation or editing, mood boards, art direction, or adjacent work. When explicitly invoked, research style possibilities, extract relevant style considerations, generate demo images or simple static demo pages, evolve them with mutation and crossover, rank them visually when evaluators support vision, and for web tasks build a simple static gallery containing every generated demo. Create proofs of style, not a production website or complete application."
 ---
 
 # Evolve Visual Style
@@ -9,7 +9,12 @@ Evolve actual visual demos with fresh subagents. Make the rendered artifact—no
 
 ## Invocation Gate
 
-Run this workflow only when the **current user request explicitly contains** `$evolve-visual-style`. Do not infer activation from topic similarity, an ordinary request to design or restyle a website or image, or an invocation in an earlier turn. Mentioning, documenting, reviewing, or quoting the Skill without asking to use it does not activate the workflow. When the explicit token is absent, ignore this Skill entirely.
+Run this workflow only after a host-native explicit invocation:
+
+- **Codex:** the current user request explicitly contains `$evolve-visual-style`.
+- **Claude Code:** the user directly invokes `/evolve-visual-style`. The repository installer adds Claude Code's native `disable-model-invocation: true` frontmatter to the installed copy.
+
+Do not infer activation from topic similarity, an ordinary request to design or restyle a website or image, or an invocation in an earlier turn. Mentioning, documenting, reviewing, or quoting the Skill without invoking it does not activate the workflow. When neither host-native explicit mechanism was used, ignore this Skill entirely.
 
 ## Defaults
 
