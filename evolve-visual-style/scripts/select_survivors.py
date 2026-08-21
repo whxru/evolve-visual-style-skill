@@ -17,6 +17,7 @@ FIELD_WEIGHTS = {
     "navigation_or_viewer_entry": 1.0,
     "container_or_grouping_grammar": 1.5,
     "whitespace_density_model": 1.0,
+    "section_rhythm": 1.25,
     "typography_or_text_system": 1.0,
     "image_medium": 1.5,
     "depth_material": 0.75,

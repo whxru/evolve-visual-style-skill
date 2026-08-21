@@ -25,7 +25,7 @@ Do not infer activation from topic similarity, an ordinary request to design or 
 - `offspring_per_round = 2 * population_size`
 - Alternate `mutation, crossover, mutation, crossover, ...`, starting with mutation.
 
-Honor explicit user overrides. Warn before execution when the requested configuration would require unusually many expensive demo-generation turns. The default run uses at least 24 subagent turns before diversity-repair generators or fallback describers: 4 initial generators, 1 initial convergence auditor, 3 initial evaluators, then 2 rounds of 4 offspring generators, 1 convergence auditor, and 3 evaluators. Allow at most one diversity-repair batch per evaluation stage by default.
+Honor explicit user overrides. Warn before execution when the requested configuration would require unusually many expensive demo-generation turns. The default run uses at least 27 subagent turns before finish repairs, diversity-repair generators, or fallback describers: 4 initial generators, 1 finish auditor, 1 convergence auditor, 3 initial evaluators, then 2 rounds of 4 offspring generators, 1 finish auditor, 1 convergence auditor, and 3 evaluators. Allow at most one finish-repair pass and one diversity-repair batch per evaluation stage by default.
 
 ## Capability Gates
 
@@ -51,7 +51,11 @@ Treat each candidate as three separate layers:
    - Web task: one runnable standalone demo page plus one or more screenshots captured from the real render.
 2. **Style metadata — evolution control only**
    - one-sentence summary
+   - one-sentence design thesis and one subject-specific brand idea
    - ordered list of 1-7 concrete noun or noun-phrase labels
+   - primary asset strategy and role
+   - one concept spine and at most one second-read moment
+   - for web, one observed section-rhythm summary
    - one screenshot-grounded `style-genome.json` describing structural and visual mechanisms
    - stable candidate ID and private lineage
 3. **Fallback description — nonvisual voting only**
@@ -83,6 +87,7 @@ Use an isolated scratch directory during evolution:
 
 ```text
 brief.md
+design-read.md
 research.md
 style-considerations.md
 search-territories.md
@@ -98,8 +103,10 @@ candidates/
     index.html                # web task
     screenshot-primary.png   # web task
     screenshot-secondary.png # only when needed
+    visual-reference.png      # optional image-first art direction, never the ballot
     metadata.md
     style-genome.json
+    finish-audit.md
     fallback.md
 rankings/
   g0-survivors.json
@@ -117,7 +124,7 @@ For web tasks, preserve every unique generated demo—not only finalists—and c
 
 Inspect the request and any existing website, code, screenshot, image, brand guide, or reference. For an existing site, inspect the rendered result and relevant implementation constraints without editing it.
 
-Record artifact type, audience, desired response, content priorities, brand continuity, hard constraints, accessibility needs, explicit avoidances, and evolution configuration. For web work, identify the domain archetype, audience relationship, trust mechanism, core task, content model, and reading or conversion flow. Separate immutable content roles from accidental component shapes or above-the-fold placement. Ask only for a missing fact that would materially change the search space.
+Record artifact type, audience, desired response, content priorities, brand continuity, hard constraints, accessibility needs, explicit avoidances, and evolution configuration. For web work, identify the domain archetype, audience relationship, trust mechanism, core task, content model, and reading or conversion flow. Separate immutable content roles from accidental component shapes or above-the-fold placement. Read [references/visual-finish.md](references/visual-finish.md) completely, then write `design-read.md` with one concise design read and coarse `visual_variance`, `visual_density`, `media_priority`, and `task_clarity` calibration. Do not equate anti-default design with minimalism. Ask only for a missing fact that would materially change the search space.
 
 ### 2. Research the Search Space
 
@@ -141,32 +148,41 @@ Pass this file unchanged to every generator. Phrase it as: `These are experience
 
 ### 4. Initialize Demo Candidates
 
-Read [references/agent-prompts.md](references/agent-prompts.md) completely. Before spawning generators, write `search-territories.md` with one mutually exclusive territory per initial candidate. Derive territories from the brief and research; make them differ across at least three of page/composition archetype, spatial topology, content flow, navigation, container grammar, whitespace/density, typography, image medium, material/depth, or interaction metaphor. Do not use four theme nouns over one shared layout. Keep hard constraints and domain authenticity common.
+Read [references/agent-prompts.md](references/agent-prompts.md) completely. Before spawning generators, write `search-territories.md` with one mutually exclusive territory per initial candidate. Derive territories from the brief, design read, calibration, and research; make them differ across at least three of page/composition archetype, spatial topology, content flow, navigation, container grammar, whitespace/density, typography, image medium, material/depth, or interaction metaphor. Give every territory one explicit asset strategy and role from [references/visual-finish.md](references/visual-finish.md); across an open web batch cover at least two materially different strategies. Do not use four theme nouns over one shared layout. Keep hard constraints and domain authenticity common.
 
 Spawn `2 * population_size` fresh generator subagents, one candidate per agent, in parallel batches within the concurrency limit. Give each a different territory and no other candidate. Across a web batch, cover multiple structural families and, when the brief and available assets permit, multiple image media. Do not let `static` collapse the batch into CSS-only diagrams.
 
 Require each generator to:
 
 1. choose a concrete primary style label and a compatible ordered label list
-2. decide what image composition or demo-page content best proves the style
-3. create the actual artifact
-4. for web, render the page and capture the agreed screenshot set
-5. visually inspect the result when capable and repair only objective failures
-6. write metadata, an observed `style-genome.json`, and an evidence-based fallback description after the demo exists
+2. commit to a one-sentence design thesis, subject-specific brand idea, one concept spine, at most one second-read moment, and the assigned asset strategy
+3. decide what image composition or demo-page content best proves the style; for web, plan a compact section-rhythm map
+4. create the actual artifact
+5. for web, render the page and capture the agreed screenshot set
+6. visually inspect the result when capable and repair only objective failures
+7. write metadata, an observed `style-genome.json`, and an evidence-based fallback description after the demo exists
 
-For images, call the available image-generation capability and save the returned image. For web, build an isolated static page that opens directly from the filesystem—normally one `index.html` with embedded or minimal local CSS and self-contained local assets. Use plain HTML/CSS. Do not use React, Vue, Svelte, Next.js, Nuxt, Vite, Webpack, package installation, dependency manifests, build steps, local servers, routing, APIs, backends, authentication, databases, analytics, deployment, or production integrations. Do not write JavaScript by default. When interaction character matters, show representative states in the page or use CSS hover/focus states. Only when the user explicitly requires real interaction may the agent add the smallest possible amount of local vanilla JavaScript. Permit local photography, generated images, illustration, collage, texture, licensed local fonts, and inline SVG. The agent decides which domain-authentic page, section mix, scroll depth, or state best demonstrates its territory; do not default to a component specimen or require the same first-screen card grid.
+For images, call the available image-generation capability and save the returned image. For web, build an isolated static page that opens directly from the filesystem—normally one `index.html` with embedded or minimal local CSS and self-contained local assets. Use plain HTML/CSS. Do not use React, Vue, Svelte, Next.js, Nuxt, Vite, Webpack, package installation, dependency manifests, build steps, local servers, routing, APIs, backends, authentication, databases, analytics, deployment, or production integrations. Do not write JavaScript by default. When interaction character matters, show representative states in the page or use CSS hover/focus states. Only when the user explicitly requires real interaction may the agent add the smallest possible amount of local vanilla JavaScript. Permit local photography, generated images, illustration, collage, texture, licensed local fonts, and inline SVG. The agent decides which domain-authentic page, section mix, scroll depth, or state best demonstrates its territory; do not default to a component specimen or require the same first-screen card grid. For an imagery-, material-, or spatially led territory, the generator may first create `visual-reference.png`, extract its type, crop, spacing, geometry, surface, and light logic, then implement the static page. The real browser screenshot—not the reference image—remains the ballot artifact. Do not require this image-first branch for type-led or information-led territories.
 
-Reject a candidate only when no demo exists, rendering is broken, hard constraints fail, or fallback text describes features absent from the artifact.
+Before the finish gate, reject a candidate only when no demo exists, rendering is broken, hard constraints fail, or fallback text describes features absent from the artifact. Step 5 may additionally regenerate a visually unresolved or fundamentally generic result using screenshot-grounded evidence.
 
-### 5. Audit Convergence Before Voting
+### 5. Audit and Finish Each Render
 
-After initial candidates render, and after every offspring batch renders, inspect the relevant screenshots together with one fresh convergence auditor. Use a vision-capable auditor whenever supported; otherwise use observed genomes plus anonymous fallback observations. Follow [references/diversity-control.md](references/diversity-control.md) and the population-auditor prompt.
+After every initial or offspring batch renders, run one fresh vision-capable finish-auditor subagent using [references/visual-finish.md](references/visual-finish.md) and the finish-auditor prompt. Give it the completed artifacts, brief, hard constraints, design read, style considerations, and each candidate's private thesis, brand idea, asset strategy, concept spine, and second-read moment. Ask it to inspect each candidate independently; it must not rank candidates or normalize them toward one house taste.
+
+Write `finish-audit.md` beside every candidate with `pass`, `repair`, or `regenerate` plus screenshot-grounded evidence about first read, typography, optical alignment, color/contrast, geometry/material, asset quality, within-artifact rhythm, domain credibility, ownability, contextual AI tells, and mechanical integrity. When visual inspection is unavailable, run only deterministic mechanical checks, mark aesthetic finish unverified, and do not imply image inspection.
+
+Apply at most one repair pass by default. Preserve the thesis and unusual choices while fixing evidenced failures. Regenerate only when a demo fails hard constraints, does not visibly express its thesis, depends on broken or fake assets, or remains fundamentally a generic template with renamed labels. Do not regenerate merely because it is polarizing, dense, sparse, ornamental, asymmetric, rich, or unfamiliar. Render the repair again and update its observed metadata before continuing.
+
+### 6. Audit Convergence Before Voting
+
+After initial candidates pass the individual finish gate, and after every offspring batch does the same, inspect the relevant screenshots together with one fresh convergence auditor. Use a vision-capable auditor whenever supported; otherwise use observed genomes plus anonymous fallback observations. Follow [references/diversity-control.md](references/diversity-control.md) and the population-auditor prompt.
 
 Write a private population audit with corrected observed genomes, repeated non-required mechanisms, structural clusters, saturated compound grammars, underexplored territories, and any redundant candidates. Detect shared page skeletons and component relationships even when labels, colors, or decorative metaphors differ.
 
-Do not consider the batch ready for voting when a non-required structural bundle dominates it, when candidates could exchange labels without changing their layouts, or when the batch collapses into one rendering medium despite open alternatives. Regenerate the most redundant candidates in missing territories, then render and audit the replacements. Allow one repair batch per stage by default; if convergence remains, disclose it and continue without an unbounded loop.
+Do not consider the batch ready for voting when a non-required structural bundle dominates it, when candidates could exchange labels without changing their layouts, or when the batch collapses into one rendering medium despite open alternatives. Regenerate the most redundant candidates in missing territories, then render and audit the replacements. Allow one diversity-repair batch per stage by default; if convergence remains, disclose it and continue without an unbounded loop.
 
-### 6. Rank the Demos
+### 7. Rank the Demos
 
 Spawn at least `evaluator_count` fresh judges and independently shuffle/relabel the candidates for each.
 
@@ -178,7 +194,7 @@ Use the visual path whenever supported. Use an identical image count, viewport s
 Require every judge to use exactly two top-level criteria with equal weight:
 
 1. **Fidelity to the user's original input — 50%**: Does the demo satisfy the user's requested goal, audience, content, functional scope, mood, references, constraints, required elements, and explicit avoidances? Treat the original user input as authoritative; do not replace it with the research digest, style labels, or the judge's personal taste.
-2. **Strength of stylization — 50%**: Does the demo establish a strong, coherent, recognizable visual language that remains credible for the requested domain? Reward deliberate and mutually reinforcing page archetype, spatial topology, content flow, typography, color, composition, container grammar, imagery, material, and interaction choices. Penalize generic templates, design-system specimen boards presented as real sites, domain-agnostic AI-default bundles, timid default styling, superficial recoloring, disconnected effects, and an attractive label unsupported by the visible demo.
+2. **Strength of stylization — 50%**: Does the demo establish a strong, coherent, recognizable visual language that remains credible for the requested domain and particular subject? Reward deliberate and mutually reinforcing page archetype, spatial topology, content flow, typography, color, composition, container grammar, imagery, material, and interaction choices. Treat visible subject-specific ownability as positive evidence. Penalize generic templates, design-system specimen boards presented as real sites, domain-agnostic AI-default bundles, timid default styling, superficial recoloring, disconnected effects, transplantable brand theater, and an attractive label unsupported by the visible demo.
 
 Use feasibility, accessibility, composition, distinctiveness, and consideration coverage only as evidence inside those two criteria, not as additional top-level scoring categories. A material hard-constraint violation is a gate: a violating candidate cannot outrank a compliant candidate merely because it is more stylized.
 
@@ -201,12 +217,12 @@ Keep the aggregate winner as quality champion, then fill remaining population sl
 
 For every newly created candidate, record the rank, Borda score, first-place votes, rank sum, observed genome, and survivor role from the first evaluation in which it participates. Append later evaluations to `rank_history` without changing its immutable index or creation generation.
 
-### 7. Evolve Each Round
+### 8. Evolve Each Round
 
 For each round from 1 through `evolution_rounds`:
 
 1. Order the current population by the latest aggregate rank, best first. Treat list index as zero-based `rank`.
-2. Inspect **every unique demo created before this round**, including eliminated candidates. Write `novelty/g<round>-existing-styles.md` as a compact existing-style map grounded in screenshots and observed genomes. For each demo, summarize its primary label, domain/page archetype, spatial topology, content flow, navigation, container grammar, whitespace/density, typography, palette/value distribution, image medium and role, geometry, material/depth, interaction treatment, and distinctive signatures. Group near-duplicates and state their shared compound grammar. Identify model-prior defaults and saturated combinations without turning them into universal bans. Exclude ranks, scores, recommendation status, candidate IDs, lineage, and evaluator comments.
+2. Inspect **every unique demo created before this round**, including eliminated candidates. Write `novelty/g<round>-existing-styles.md` as a compact existing-style map grounded in screenshots and observed genomes. For each demo, summarize its primary label, domain/page archetype, design thesis as visibly expressed, concept spine, spatial topology, content flow, navigation, container grammar, section rhythm, whitespace/density, typography, palette/value distribution, asset strategy, image medium and role, geometry, material/depth, interaction treatment, and distinctive signatures. Group near-duplicates and state their shared compound grammar. Identify model-prior defaults and saturated combinations without turning them into universal bans. Exclude ranks, scores, recommendation status, candidate IDs, lineage, and evaluator comments.
 3. Pass that existing-style map unchanged to every mutation and crossover agent. Require the agent to begin with a concise private `NOVELTY CHECK` that:
    - summarizes the already-covered style territory most relevant to its parent or parents
    - names the specific resemblance patterns it will avoid
@@ -220,7 +236,7 @@ For each round from 1 through `evolution_rounds`:
    ```
 
    Use `--count 1` for mutation and `--count 2` for crossover. The sampler uses normalized weights proportional to `1 / (rank + population_size)` and samples two parents without replacement.
-5. Give the child agent the unchanged brief, research digest, full style considerations, hard constraints, existing-style map, and parent artifacts:
+5. Give the child agent the unchanged brief, design read and calibration, research digest, full style considerations, hard constraints, existing-style map, and parent artifacts:
    - Image mutation: one parent image.
    - Image crossover: two parent images.
    - Web mutation: one parent screenshot set plus its demo source.
@@ -231,12 +247,13 @@ For each round from 1 through `evolution_rounds`:
    - **Crossover:** create a new governing label and one coherent visual system from compatible parent principles while introducing a new page/composition archetype and remaining visibly distinct from both parents and the full existing-style map. Never collage screenshots, split the page into parent halves, or concatenate label lists.
    - **Web offspring:** preserve the same simple static-page boundary as initialization. Do not introduce frameworks, dependencies, build tooling, servers, backends, or deployment.
 8. Create the observed genome, metadata, and fallback text only after the child demo exists.
-9. Audit the offspring batch against every earlier demo using Step 5. Regenerate redundant children once when needed before voting.
-10. Form the survival pool from the current `population_size` parents plus all `2 * population_size` offspring. Rank the `3 * population_size` demos with fresh judges using Step 6, then use `select_survivors.py` to keep a quality-qualified structurally diverse population. If the diversity floor cannot be met, regenerate and evaluate a missing-territory candidate rather than filling the population with a near-duplicate.
+9. Run the individual finish audit from Step 5 on every offspring and complete the permitted repair pass.
+10. Audit the offspring batch against every earlier demo using Step 6. Regenerate redundant children once when needed before voting.
+11. Form the survival pool from the current `population_size` parents plus all `2 * population_size` offspring. Rank the `3 * population_size` demos with fresh judges using Step 7, then use `select_survivors.py` to keep a quality-qualified structurally diverse population. If the diversity floor cannot be met, regenerate and evaluate a missing-territory candidate rather than filling the population with a near-duplicate.
 
 Do not carry previous scores into a new round. Rerank the current visual competition from scratch.
 
-### 8. Build the Web Demo Gallery and Present Results
+### 9. Build the Web Demo Gallery and Present Results
 
 When the run produced web demo pages, build one simple static gallery containing **every unique demo created across initialization and all evolution rounds**, including eliminated candidates. Do not show the same surviving parent more than once. The gallery is an index of visual proofs, not an application.
 
@@ -285,9 +302,15 @@ Do not replace demos with component documents. End with a comparison and a recom
 Before delivery, verify:
 
 - every candidate and finalist has a real generated image or a real rendered demo page
+- the run has one explicit design read and coarse variance, density, media-priority, and task-clarity calibration
 - screenshots come from the supplied demo source and use consistent comparison viewports
 - selected style considerations reached every generator and operator
 - every initial candidate received a mutually exclusive structural/media search territory derived from the same brief
+- every territory declares an asset strategy and an open web batch covers at least two materially different strategies unless the brief prevents it
+- every candidate records a visible design thesis, subject-specific brand idea, concept spine, asset treatment, and no more than one second-read moment
+- every web candidate records an observed section rhythm rather than repeating one accidental section family unchecked
+- every generated batch completed an individual rendered-finish audit before convergence auditing, with repairs preserving unusual choices instead of normalizing the population
+- contextual AI tells were evaluated with evidence and exceptions, not applied as universal style bans
 - every finished candidate has an artifact-grounded observed style genome written after rendering
 - every evaluation stage ran a cross-candidate convergence audit that named shared compound grammar rather than only theme labels
 - no unrequested structural bundle or single rendering medium dominates the batch without disclosure and one repair attempt
@@ -302,6 +325,7 @@ Before delivery, verify:
 - no production project was built or existing site modified without separate authorization
 - every web demo is a simple static page that opens directly from disk without a framework, dependency install, build step, or server
 - static web candidates were allowed self-contained local visual assets and were not forced into CSS-only diagrams
+- imagery-dependent directions use credible assets and crops rather than fake div screenshots or weak placeholders
 - each web candidate resembles a plausible artifact in the requested domain rather than an interchangeable component specimen
 - for web tasks, every unique generated demo appears exactly once in the gallery, newest generation first and ranked within its generation
 - every gallery card has an immutable Index, recommendation/rank information, a real thumbnail, and a working relative link to the complete demo
@@ -312,6 +336,7 @@ If the population converges into near-duplicates, disclose it. Run an extra roun
 ## Resources
 
 - [references/style-anchors.md](references/style-anchors.md): style-consideration guidance, demo contract, and fallback schema
+- [references/visual-finish.md](references/visual-finish.md): design reads, candidate theses, asset strategies, section rhythm, contextual AI tells, and rendered finish audits
 - [references/diversity-control.md](references/diversity-control.md): domain archetypes, search territories, observed style genomes, convergence audits, and survivor policy
 - [references/agent-prompts.md](references/agent-prompts.md): demo-generation, mutation, crossover, and dual-mode judging prompts
 - `scripts/sample_parents.py`: rank-weighted parent sampling

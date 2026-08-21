@@ -27,8 +27,9 @@ Always consider these areas and select the ones that materially affect the artif
 6. **Shape and geometry** — Corner logic, edge character, silhouette language, proportions, repetition, container grammar, and framing.
 7. **Imagery or subject treatment** — Photography, illustration, diagrams, texture, crop, lighting, perspective, abstraction, medium, narrative role, and relation to text or UI.
 8. **Material and surface** — Paper, glass, ink, grain, pixels, gloss, textile, paint, collage edges, shadows, borders, or deliberate cleanliness.
-9. **Distinctive signatures** — Recurring visible motifs that make the direction recognizable without its name.
-10. **Avoidances** — Clichés, conflicting treatments, inaccessible patterns, model-prior defaults, and mechanisms that would erase distinction or domain credibility.
+9. **Visual intent and asset strategy** — The design thesis, subject-specific brand idea, concept spine, primary medium, asset role, framing, and one optional second-read moment.
+10. **Distinctive signatures** — Recurring visible motifs that make the direction recognizable without its name.
+11. **Avoidances** — Clichés, conflicting treatments, inaccessible patterns, model-prior defaults, and mechanisms that would erase distinction or domain credibility.
 
 Send selected considerations to agents with this framing:
 
@@ -43,6 +44,7 @@ Select relevant items for a webpage, site, interface, landing page, or product s
 - **Page archetype and content flow:** decide whether the proof is narrative, editorial, transactional, spatial, indexical, tool-centered, archival, or another domain-appropriate form; define how identity, task, evidence, and action unfold.
 - **Layout and spatial topology:** page shell, continuous or segmented space, widths, columns, gutters, layers, breakpoints, section rhythm, asymmetry, and relationship to the viewport.
 - **Spacing and density:** base unit, compact/comfortable policy, vertical rhythm, information density, and empty-space budget.
+- **Section rhythm:** the sequence of composition families, density, image-to-text ratio, focal scale, material/background mode, and transitions across major zones.
 - **Component and container grammar:** navigation, buttons, cards, forms, tables, charts, modals, filters, states, container dependence, repetition, and edge relationships. Do not assume cards, bars, or equal grids.
 - **Depth and boundaries:** borders, shadows, elevation, overlap, dividers, translucency, or deliberate flatness.
 - **Image medium and role:** photography, generated imagery, illustration, collage, inline SVG, diagrams, 3D, texture, or type-only composition; decide whether imagery is evidence, atmosphere, explanation, navigation, or ornament.
@@ -99,6 +101,7 @@ Do not mistake implementation accidents for identity. Pass these statuses to eve
 - Render the page in a real browser and capture a primary screenshot at the comparison viewport.
 - Capture the same secondary viewport for every candidate only when responsive transformation materially anchors the style.
 - Fix broken layout, missing assets, clipping, or unusable contrast before voting.
+- Complete the screenshot-grounded finish audit in [visual-finish.md](visual-finish.md) before the population convergence audit.
 
 ## Metadata Contract
 
@@ -108,12 +111,27 @@ Keep metadata separate from the primary demo:
 ## Style summary
 <one concrete sentence>
 
+## Design thesis
+<what the visitor should first notice or feel and how the artifact causes it>
+
+## Brand idea
+<why this visual argument belongs to this entity, subject, or product>
+
 ## Label list
 1. <primary concrete noun or noun phrase>
 2. <optional supporting label>
 
 ## Demo choice
 <what was built and why it exposes the style>
+
+## Asset strategy
+<primary medium, role, crop/framing, and treatment>
+
+## Concept spine and second-read moment
+<one governing idea and at most one subtle supporting detail>
+
+## Section rhythm
+<observed major-zone rhythm for web; omit for a single image>
 
 ## Lineage
 <private stable IDs; never send to judges>

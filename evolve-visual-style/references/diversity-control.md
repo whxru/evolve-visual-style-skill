@@ -7,6 +7,7 @@ Use screenshot-grounded structural fingerprints to prevent a population from bec
 - Domain archetype and content roles
 - Exploration territories
 - Observed style genome
+- Within-artifact rhythm
 - Population convergence audit
 - AI-default evidence
 - Diversity-aware survival
@@ -34,6 +35,8 @@ Before initial generation, derive one mutually exclusive territory per initial c
 - depth or material model
 - interaction metaphor
 
+Also assign one primary asset strategy and role using [visual-finish.md](visual-finish.md). Across an open web batch, cover at least two materially different asset strategies instead of letting every territory become a CSS-only composition. Record the run-level design read and calibration separately; do not force each territory toward the same density, media priority, or commercial skeleton.
+
 Keep domain fidelity and hard constraints common to all territories. Do not assign every territory the same hero, input, card count, or above-the-fold checklist. Ensure the batch covers multiple structural families and, when assets and the brief permit, multiple media such as photography, generated imagery, illustration, collage, inline SVG, diagram, 3D render, or type-led composition.
 
 Static web delivery does not mean CSS-only imagery. Use self-contained local assets, licensed local fonts, generated images, textures, or inline SVG when they materially establish a territory. Do not use remote runtime dependencies.
@@ -52,6 +55,7 @@ After rendering and inspecting a demo, write `style-genome.json` from visible ev
   "navigation_or_viewer_entry": "quiet global masthead with contextual section links",
   "container_or_grouping_grammar": "mostly containerless; framed evidence only",
   "whitespace_density_model": "large variable fields punctuated by dense evidence",
+  "section_rhythm": "quiet masthead to immersive image field to compact evidence rail",
   "typography_or_text_system": "display serif narrative with utilitarian sans controls",
   "image_medium": ["documentary photography", "data annotation"],
   "image_role": "primary narrative evidence rather than decoration",
@@ -59,6 +63,8 @@ After rendering and inspecting a demo, write `style-genome.json` from visible ev
   "geometry": "full-bleed crops and irregular annotation lines",
   "depth_material": "photographic depth with flat typographic overlays",
   "interaction_or_temporal_model": "editorial reading interrupted by direct product actions",
+  "concept_spine": "research as field observation rather than abstract capability",
+  "second_read_moment": "annotation coordinates resolve into section markers",
   "distinctive_signatures": ["caption rails", "edge-to-edge research scenes"],
   "ai_default_flags": []
 }
@@ -66,9 +72,13 @@ After rendering and inspecting a demo, write `style-genome.json` from visible ev
 
 Keep values concrete and artifact-grounded. Do not make every field unique by paraphrasing. Use the same phrase for materially equivalent mechanisms so recurrence can be detected.
 
-For image-only candidates, use the same keys with image-appropriate values: `artifact_archetype` names the composition family, `content_or_reading_flow` names the eye path, `navigation_or_viewer_entry` names the framing and first visual entry, `container_or_grouping_grammar` names grouping and silhouette logic, and `interaction_or_temporal_model` names implied action, sequence, or stillness.
+For image-only candidates, use the same keys with image-appropriate values: `artifact_archetype` names the composition family, `content_or_reading_flow` names the eye path, `navigation_or_viewer_entry` names the framing and first visual entry, `container_or_grouping_grammar` names grouping and silhouette logic, `section_rhythm` names the sequence of large, medium, and small visual masses, and `interaction_or_temporal_model` names implied action, sequence, or stillness.
 
 The deterministic survivor selector compares these fields with extra weight on artifact archetype, spatial topology, grouping grammar, content/reading flow, and image medium. Color and labels do not establish structural distance by themselves.
+
+## Within-Artifact Rhythm
+
+Use the rendered rhythm map from [visual-finish.md](visual-finish.md) to distinguish purposeful repetition from accidental template repetition. Record a concise observed `section_rhythm` in the genome. During the population audit, inspect both cross-candidate resemblance and repeated layout families inside each candidate. Do not reward arbitrary alternation; a catalog, feed, table, index, or publication may need disciplined repetition.
 
 ## Population Convergence Audit
 
@@ -96,7 +106,7 @@ Pass an anonymous, candidate-ID-free version of the shared grammar and saturated
 
 ## AI-Default Evidence
 
-Look for contextual evidence of model-prior convergence, not a universal blacklist. Potential signals include repeated bento grids, centered giant headlines, floating prompt bars, equal card rows, generic dashboard chrome, gratuitous pills or status tags, uniform corner logic, black/off-white plus one neon accent, decorative orbital diagrams, generic grain, and every required item compressed above the fold.
+Look for contextual evidence of model-prior convergence, not a universal blacklist. Read the contextual library in [visual-finish.md](visual-finish.md). Potential signals include repeated bento grids, centered giant headlines, floating prompt bars, equal card rows, generic dashboard chrome, gratuitous pills or status tags, uniform corner logic, black/off-white plus one neon accent, decorative orbital diagrams, generic grain, and every required item compressed above the fold.
 
 Any one mechanism may be appropriate. Penalize an unrequested bundle when it recurs across candidates, does not arise from domain needs or references, and could be transplanted unchanged into an unrelated commercial, academic, or portfolio site.
 

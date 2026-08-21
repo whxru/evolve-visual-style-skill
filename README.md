@@ -2,7 +2,7 @@
 
 An explicit-invocation-only Agent Skill for exploring, evolving, and visually ranking style directions for websites and images. One canonical workflow supports both Codex and Claude Code through thin installation-time adapters.
 
-The Skill treats rendered artifacts as candidates: image tasks produce actual images, while web tasks produce lightweight static HTML/CSS demo pages and screenshots. It uses independent subagents for generation and judging, audits cross-candidate visual grammar, preserves both quality and structural diversity during evolution, and builds a static gallery of every generated web demo.
+The Skill treats rendered artifacts as candidates: image tasks produce actual images, while web tasks produce lightweight static HTML/CSS demo pages and screenshots. It uses independent subagents for generation and judging, commits each direction to a design thesis and asset strategy, audits each render for finish and contextual AI tells, audits cross-candidate visual grammar, preserves both quality and structural diversity during evolution, and builds a static gallery of every generated web demo.
 
 ## Highlights
 
@@ -89,7 +89,8 @@ evolve-visual-style/
 ├── references/
 │   ├── agent-prompts.md
 │   ├── diversity-control.md
-│   └── style-anchors.md
+│   ├── style-anchors.md
+│   └── visual-finish.md
 └── scripts/
     ├── aggregate_rankings.py
     ├── build_gallery.py
