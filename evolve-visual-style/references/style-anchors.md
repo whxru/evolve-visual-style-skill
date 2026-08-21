@@ -19,14 +19,16 @@ Use this framework to extract experienced attention areas that should be sent to
 
 Always consider these areas and select the ones that materially affect the artifact.
 
-1. **Typography** — Family/classification, roles, weights, scale, casing, tracking, line height, text density, fallback, and multilingual behavior.
-2. **Color system** — Role-based colors, contrast polarity, distribution, state colors, material relationship, and accessibility.
-3. **Composition and hierarchy** — Focal order, grid or compositional skeleton, alignment, density, negative space, crop, and dominant/subordinate ratios.
-4. **Shape and geometry** — Corner logic, edge character, silhouette language, proportions, repetition, containers, and framing.
-5. **Imagery or subject treatment** — Photography, illustration, diagrams, texture, crop, lighting, perspective, abstraction, and relation to text or UI.
-6. **Material and surface** — Paper, glass, ink, grain, pixels, gloss, textile, paint, collage edges, shadows, borders, or deliberate cleanliness.
-7. **Distinctive signatures** — Recurring visible motifs that make the direction recognizable without its name.
-8. **Avoidances** — Clichés, conflicting treatments, inaccessible patterns, and defaults that would erase distinction.
+1. **Domain archetype** — The real-world kind of artifact, its audience relationship, trust mechanism, task, content model, and reading or conversion flow.
+2. **Page or composition archetype** — The structural family, spatial topology, navigation or reading model, content flow, and viewport relationship.
+3. **Typography** — Family/classification, roles, weights, scale, casing, tracking, line height, text density, fallback, and multilingual behavior.
+4. **Color system** — Role-based colors, contrast polarity, distribution, state colors, material relationship, and accessibility.
+5. **Composition and hierarchy** — Focal order, grid or compositional skeleton, alignment, density curve, negative-space topology, crop, and dominant/subordinate ratios.
+6. **Shape and geometry** — Corner logic, edge character, silhouette language, proportions, repetition, container grammar, and framing.
+7. **Imagery or subject treatment** — Photography, illustration, diagrams, texture, crop, lighting, perspective, abstraction, medium, narrative role, and relation to text or UI.
+8. **Material and surface** — Paper, glass, ink, grain, pixels, gloss, textile, paint, collage edges, shadows, borders, or deliberate cleanliness.
+9. **Distinctive signatures** — Recurring visible motifs that make the direction recognizable without its name.
+10. **Avoidances** — Clichés, conflicting treatments, inaccessible patterns, model-prior defaults, and mechanisms that would erase distinction or domain credibility.
 
 Send selected considerations to agents with this framing:
 
@@ -36,11 +38,14 @@ Send selected considerations to agents with this framing:
 
 Select relevant items for a webpage, site, interface, landing page, or product surface.
 
-- **Demo content choice:** choose the page, section mix, content density, and interaction state that best proves the proposed style.
-- **Layout system:** page shell, widths, columns, gutters, breakpoints, section rhythm, and asymmetry.
+- **Genre authenticity:** make the result first read as a plausible commercial site, academic profile, publication, product surface, archive, or other brief-specific domain—not as a generic design board with replaced copy.
+- **Demo content choice:** choose the page, section mix, content density, scroll depth, and interaction state that best proves the proposed style. Preserve required content roles without forcing identical components or first-screen placement across candidates.
+- **Page archetype and content flow:** decide whether the proof is narrative, editorial, transactional, spatial, indexical, tool-centered, archival, or another domain-appropriate form; define how identity, task, evidence, and action unfold.
+- **Layout and spatial topology:** page shell, continuous or segmented space, widths, columns, gutters, layers, breakpoints, section rhythm, asymmetry, and relationship to the viewport.
 - **Spacing and density:** base unit, compact/comfortable policy, vertical rhythm, information density, and empty-space budget.
-- **UI components:** navigation, buttons, cards, forms, tables, charts, modals, filters, and states that belong in the chosen demo.
+- **Component and container grammar:** navigation, buttons, cards, forms, tables, charts, modals, filters, states, container dependence, repetition, and edge relationships. Do not assume cards, bars, or equal grids.
 - **Depth and boundaries:** borders, shadows, elevation, overlap, dividers, translucency, or deliberate flatness.
+- **Image medium and role:** photography, generated imagery, illustration, collage, inline SVG, diagrams, 3D, texture, or type-only composition; decide whether imagery is evidence, atmosphere, explanation, navigation, or ornament.
 - **Iconography and marks:** stroke/fill, optical size, metaphor family, diagrams, patterns, ornaments, and badges.
 - **Motion and interaction:** hover/focus/press behavior, transitions, scrolling, timing, easing, and reduced-motion fallback.
 - **Responsive transformation:** what reflows, collapses, crops, scrolls, or changes hierarchy.
@@ -48,7 +53,7 @@ Select relevant items for a webpage, site, interface, landing page, or product s
 - **Accessibility and usability:** contrast, focus, text sizing, target sizes, reading order, chart differentiation, and motion limits.
 - **Implementation tokens:** variables for type, color, spacing, radius, border, shadow, and motion when they help keep the demo coherent.
 
-The demo creator chooses what to build. Require an isolated, self-contained static demonstration page rather than a complete project. The page may be a hero-plus-components composition, a representative product/detail view, an editorial landing page, a dashboard slice, or another page that makes the style legible. It is a visual proof, not a functioning product prototype.
+The demo creator chooses what to build. Require an isolated, self-contained static demonstration page rather than a complete project. The page may be a narrative homepage, representative product/detail view, editorial landing page, spatial composition, index, dashboard slice, or another domain-authentic page that makes the style legible. Do not default to a hero-plus-components board. It is a visual proof, not a functioning product prototype.
 
 ## Image Considerations
 
@@ -87,8 +92,10 @@ Do not mistake implementation accidents for identity. Pass these statuses to eve
 
 - Save one lightweight static demo that opens directly from disk, normally one `index.html` plus embedded or minimal local CSS and local assets.
 - Use plain HTML/CSS. Do not use frontend frameworks, package managers, dependency manifests, build tools, local servers, routing, APIs, backends, authentication, databases, analytics, deployment, hosting, or production integrations.
+- Treat static delivery as a runtime boundary, not a CSS-only visual limitation. Use self-contained local photography, generated imagery, illustration, textures, licensed local fonts, or inline SVG when they materially establish the direction.
 - Do not add JavaScript by default. Show representative interaction states statically or with CSS hover/focus states. Add only minimal local vanilla JavaScript when the user explicitly requires real interaction.
-- Let the agent choose representative content and components.
+- Let the agent choose representative content and components. Preserve required content roles without requiring every candidate to use the same component inventory, card count, or above-the-fold compression.
+- Make the result resemble a plausible page in the requested domain. Do not deliver a component specimen or posterized dashboard unless requested.
 - Render the page in a real browser and capture a primary screenshot at the comparison viewport.
 - Capture the same secondary viewport for every candidate only when responsive transformation materially anchors the style.
 - Fix broken layout, missing assets, clipping, or unusable contrast before voting.
@@ -113,6 +120,8 @@ Keep metadata separate from the primary demo:
 ```
 
 Labels are compressed hypotheses. Prefer `railway timetable`, `lacquered control panel`, `tabloid masthead`, `risograph overprint`, or `museum specimen drawer` over adjective-only phrases. One precise label may be sufficient. Every label must have a visible consequence in the demo.
+
+After rendering, also write the observed `style-genome.json` defined in [diversity-control.md](diversity-control.md). The label may summarize the result but never proves novelty or structural distance.
 
 ## Fallback Description Schema
 
@@ -147,17 +156,17 @@ Do not include style labels, candidate ID, lineage, parentage, exploration cue, 
 
 ## Existing-Style Map and Boldness Floor
 
-Before each evolution round, inspect all unique artifacts created so far, not only the surviving population. Build one concise map of already-covered style territory. For each artifact, summarize only observable features across the relevant anchors: primary label, typography, palette/value structure, composition and density, geometry, imagery, material/depth, interaction treatment, and distinctive signatures. Group near-duplicates and call out saturated combinations. Do not include rank, score, recommendation, lineage, or evaluator comments.
+Before each evolution round, inspect all unique artifacts created so far, not only the surviving population. Build one concise map of already-covered style territory. For each artifact, summarize only observable features across the relevant anchors: domain/page archetype, spatial topology, content flow, navigation, container grammar, whitespace/density, typography, palette/value distribution, image medium and role, geometry, material/depth, interaction treatment, and distinctive signatures. Group near-duplicates and name their shared compound grammar. Do not include rank, score, recommendation, lineage, or evaluator comments.
 
 Give the same map to every mutation and crossover agent in that round. Require each agent to return a private `NOVELTY CHECK` before generation that identifies the existing territories it will avoid, its new governing label, and its intended departures. Keep this check out of candidate metadata, fallback voting text, gallery content, and judge context.
 
-Require every offspring to visibly change at least three high-impact axes, including at least one structural axis such as composition/hierarchy, typography system, geometry/silhouette, or imagery/perspective. Palette-only changes, theme inversion, minor spacing changes, small radius adjustments, and component reskins do not satisfy this floor. If the child could be confused with an existing demo at a glance, regenerate it more boldly before voting.
+Require every offspring to break the relevant shared compound grammar and visibly change at least three high-impact axes. It must change a page-level structural axis—page archetype, spatial topology, or content flow—plus container grammar, and at least one of typography system, image medium/role, depth/material, or interaction model. Palette-only changes, theme inversion, minor spacing changes, small radius adjustments, and component reskins do not satisfy this floor. If the child could be confused with an existing demo at a glance or could exchange its label with one, regenerate it more boldly before voting.
 
 ## Mutation and Crossover Semantics
 
-Mutation changes a coherent semantic bundle and makes that change visible in a newly generated/rendered artifact. It must use a new governing label, clear the boldness floor, and depart from both its parent and the complete existing-style map. Useful bundles include typography+density+grid rhythm, palette polarity+material+depth, crop+focal hierarchy+text-image relationship, or geometry+iconography+motion.
+Mutation changes a coherent generative bundle and makes that change visible in a newly generated/rendered artifact. It must use a new governing label, clear the structural boldness floor, and depart from both its parent and the complete existing-style map. Useful bundles include page archetype+content flow+container grammar, spatial topology+image medium+whitespace model, or navigation model+typography system+interaction metaphor.
 
-Crossover creates a new governing label and coherent visual system from compatible parent logic. It must clear the boldness floor and remain visibly distinct from both parents and the complete existing-style map. It must not collage parent images, split a page into two parent zones, alternate styles section by section, or concatenate label lists. Preserve all hard constraints and reconsider every selected attention area.
+Crossover creates a new governing label and coherent visual system from compatible parent logic. It must synthesize principles rather than average surfaces, clear the structural boldness floor, and remain visibly distinct from both parents and the complete existing-style map. It must not collage parent images, split a page into two parent zones, alternate styles section by section, or concatenate label lists. Preserve all hard constraints and reconsider every selected attention area.
 
 ## Web Gallery Ledger and Manifest
 

@@ -7,6 +7,7 @@ Use these contracts with raw task-local artifacts. Do not leak other candidates 
 - Shared generator context
 - Image demo generator
 - Web demo generator
+- Population convergence auditor
 - Operator novelty rules
 - Mutation
 - Crossover
@@ -22,6 +23,9 @@ Create one independent visual-style demo for the brief below. The finished demo 
 USER BRIEF
 <brief>
 
+DOMAIN ARCHETYPE AND CONTENT ROLES
+<real artifact type, audience relationship, trust mechanism, core task, content model, and required roles without a fixed component layout>
+
 RESEARCH DIGEST
 <facts, transferable observations, and URLs>
 
@@ -34,9 +38,9 @@ HARD CONSTRAINTS
 <immutable requirements and avoids>
 
 EXPLORATION CUE
-<one abstract direction used only to diversify search>
+<one mutually exclusive structural and media territory derived for this candidate>
 
-First choose one concrete primary style label and up to six compatible supporting noun phrases. Decide what visual content best proves that style. Create the actual demo. Only after the demo exists, write compact metadata and an objective fallback observation describing what is genuinely visible or implemented. Do not mention other candidates, genetic algorithms, voting, or lineage outside private metadata.
+First choose one concrete primary style label and up to six compatible supporting noun phrases. Decide what domain-authentic visual content best proves that style within the assigned territory. Create the actual demo. Only after rendering and visually inspecting it, write compact metadata, an observed style-genome.json, and an objective fallback observation describing what is genuinely visible or implemented. The label does not prove novelty. Do not mention other candidates, genetic algorithms, voting, or lineage outside private metadata.
 ```
 
 ## Image Demo Generator
@@ -56,7 +60,36 @@ Build one isolated, lightweight static demo page that shows the proposed visual 
 
 Use plain HTML/CSS. Do not use React, Vue, Svelte, Next.js, Nuxt, Vite, Webpack, package managers, dependency manifests, build steps, local servers, routing, APIs, backend services, authentication, databases, analytics, deployment, hosting, or production integrations. Do not add JavaScript by default. If interaction character matters, depict the relevant states in the static composition or use CSS hover/focus states. Add only the smallest amount of local vanilla JavaScript when the user explicitly requires real interaction. This is a visual proof, not a product prototype.
 
+Static delivery is not a CSS-only visual limitation. Use self-contained local photography, generated images, illustration, collage, textures, licensed local fonts, or inline SVG when they materially establish the assigned territory. Do not load remote runtime assets. Make one plausible page in the requested domain; do not default to a component specimen, bento board, or posterized dashboard. Preserve required content roles without forcing every role, card, or link into the first screenshot.
+
 Render the page in a real browser at the agreed comparison viewport and save screenshot-primary.png. Create the agreed secondary viewport only when requested for every candidate. Inspect the screenshots and repair broken rendering, missing assets, clipping, unreadable required text, or unusable contrast. The rendered screenshot is the visual ballot artifact; the runnable page is the supporting deliverable. Write metadata.md and fallback.md only after the final render.
+```
+
+## Population Convergence Auditor
+
+Give a fresh auditor every relevant generated image or screenshot at the same display size plus the brief, domain archetype, content roles, hard constraints, and observed genomes. Prefer a vision-capable auditor. When vision is unavailable, give anonymous fallback observations and observed genomes, state that visual similarity confidence is lower, and never imply direct image inspection. This is an internal diversity gate, not a jury ballot.
+
+```text
+Inspect the completed demos together for structural convergence. Do not rank their quality and do not propose cosmetic restyles.
+
+For each demo, verify or correct its observed genome using visible evidence. Then report:
+
+SHARED NON-REQUIRED MECHANISMS
+- <mechanism>: <recurrence count and visible evidence>
+
+STRUCTURAL CLUSTERS
+- <cluster>: <members and the page skeleton, content flow, container grammar, medium, and density that make them similar>
+
+SATURATED COMPOUND GRAMMARS
+- <reproducible bundle of mechanisms that recur together>
+
+UNDEREXPLORED TERRITORIES
+- <structural or media route, not merely a new theme noun>
+
+REGENERATE BEFORE VOTING
+- <redundant demos, if any, and which missing territory each replacement must occupy>
+
+Treat differently named demos as duplicates when they could exchange labels without changing their layouts. Look for contextual AI-default bundles such as the same top bar, oversized hero, prompt field, equal card row, uniform framing, flat diagram, accent color, or above-the-fold compression. Any one mechanism may be appropriate; flag unrequested recurrence, not universal style crimes. Do not use ranks, authorship, lineage, or personal taste.
 ```
 
 ## Operator Novelty Rules
@@ -65,17 +98,18 @@ Insert this block into every mutation and crossover prompt:
 
 ```text
 EXISTING STYLE AND FEATURE MAP
-<artifact-grounded summary of every unique demo created so far, including eliminated demos; no IDs, ranks, scores, lineage, or evaluator comments>
+<artifact-grounded structural and visual summary of every unique demo created so far, including eliminated demos; include shared compound grammars and saturated bundles; no IDs, ranks, scores, lineage, or evaluator comments>
 
 Before creating the artifact, return a concise private NOVELTY CHECK with:
 - ALREADY COVERED: the relevant existing style territories and visible feature bundles
-- AVOID: the labels, compositions, and visual mechanisms the child must not resemble
+- AVOID: the labels, page skeletons, content flows, container grammars, media choices, and compound mechanisms the child must not resemble
 - NEW GOVERNING LABEL: one concrete label absent from the map
-- BOLD DEPARTURE: at least three high-impact axes that will visibly change, including at least one structural axis
+- STRUCTURAL REWRITE: the new page archetype/spatial topology/content flow and container grammar
+- SUPPORTING DEPARTURES: at least one typography, image-medium, depth/material, or interaction change
 
-High-impact axes are typography; palette/value structure; composition/grid/density; geometry/component silhouette; imagery/subject treatment; material/depth; and interaction/state presentation. Structural axes are composition/hierarchy, typography system, geometry/silhouette, and imagery/perspective.
+The child must change a page-level structural axis—page archetype, spatial topology, or content flow—plus container grammar, and at least one supporting system: typography, image medium/role, depth/material, or interaction. A new label and palette do not establish novelty.
 
-Do not create a colorway, theme inversion, minor spacing change, radius adjustment, or component reskin. The child must be unmistakably different from every mapped demo at a glance while still satisfying the user brief and hard constraints. If the first render remains similar, regenerate it more boldly before returning it. Keep the NOVELTY CHECK out of user-facing files, fallback voting copy, and judge context.
+Do not create a colorway, theme inversion, minor spacing change, radius adjustment, themed skin, or component reskin. The child must be unmistakably different from every mapped demo at a glance while still satisfying the user brief, domain archetype, content roles, and hard constraints. If it could exchange labels with an existing demo without changing its page skeleton, regenerate it before returning. Keep the NOVELTY CHECK out of user-facing files, fallback voting copy, and judge context.
 ```
 
 ## Mutation Prompt
@@ -85,6 +119,9 @@ Create one substantial visual mutation for the same brief.
 
 USER BRIEF
 <brief>
+
+DOMAIN ARCHETYPE AND CONTENT ROLES
+<unchanged domain guidance>
 
 RESEARCH DIGEST
 <digest>
@@ -98,7 +135,7 @@ PARENT ARTIFACT
 PARENT METADATA
 <summary and labels only>
 
-Apply the Operator Novelty Rules above before creation. Change the primary label or one coherent label bundle, then make that semantic change plainly observable in a newly generated image or newly rendered demo page. Preserve useful parent logic, every hard constraint, and deliberate treatment of the full consideration list, but depart substantially from both the parent and every style in the existing map. Clear the boldness floor; do not merely rename, recolor, or describe a variant. Return a new demo artifact, then new metadata and fallback text. Do not mention mutation, parentage, ranking, evaluation, or the novelty check in user-facing files.
+Apply the Operator Novelty Rules above before creation. Change the governing generative bundle, then make the structural rewrite plainly observable in a newly generated image or newly rendered demo page. Preserve useful parent logic, every hard constraint, and deliberate treatment of the full consideration list, but depart substantially from both the parent and every style in the existing map. Clear the structural boldness floor; do not merely rename, recolor, or describe a variant. Return a new demo artifact, then observed genome, metadata, and fallback text. Do not mention mutation, parentage, ranking, evaluation, or the novelty check in user-facing files.
 
 For a web child, preserve the lightweight static-page contract: plain HTML/CSS, directly openable from disk, no framework, dependencies, build step, server, backend, deployment, or hosting. Keep JavaScript absent unless the user explicitly required real interaction; then use only minimal local vanilla JavaScript.
 ```
@@ -110,6 +147,9 @@ Create one coherent new visual demo from two source candidates for the same brie
 
 USER BRIEF
 <brief>
+
+DOMAIN ARCHETYPE AND CONTENT ROLES
+<unchanged domain guidance>
 
 RESEARCH DIGEST
 <digest>
@@ -126,7 +166,7 @@ SOURCE ARTIFACT B
 SOURCE METADATA
 <summaries and labels only>
 
-Apply the Operator Novelty Rules above before creation. Invent one new primary label that names a unified visual model and is absent from the existing map. Select compatible high-value logic from both sources, then generate/render an artifact that is unmistakably different from both parents and every mapped style. Clear the boldness floor. Do not collage parent screenshots, divide the page into parent halves, concatenate label lists, average values mechanically, or preserve contradictions. Reconsider every style consideration and preserve all hard constraints. Return the new demo first, then metadata and fallback text. Do not mention crossover, sources, lineage, ranking, evaluation, or the novelty check in user-facing files.
+Apply the Operator Novelty Rules above before creation. Invent one new primary label that names a unified visual model and is absent from the existing map. Select compatible generative principles from both sources, then create a new page archetype, spatial organization, and component relationship rather than averaging their surfaces. The result must be unmistakably different from both parents and every mapped style. Clear the structural boldness floor. Do not collage parent screenshots, divide the page into parent halves, concatenate label lists, average values mechanically, or preserve contradictions. Reconsider every style consideration and preserve all hard constraints. Return the new demo first, then observed genome, metadata, and fallback text. Do not mention crossover, sources, lineage, ranking, evaluation, or the novelty check in user-facing files.
 
 For a web child, preserve the lightweight static-page contract: plain HTML/CSS, directly openable from disk, no framework, dependencies, build step, server, backend, deployment, or hosting. Keep JavaScript absent unless the user explicitly required real interaction; then use only minimal local vanilla JavaScript.
 ```
@@ -152,7 +192,7 @@ ANONYMOUS VISUAL DEMOS
 
 Use exactly two top-level criteria:
 1. FIDELITY TO THE USER'S ORIGINAL INPUT — 50%. Judge whether the demo satisfies the requested goal, audience, content, functional scope, mood, references, required elements, constraints, and explicit avoidances. The original input is authoritative; do not replace it with your taste, the research digest, or inferred trends.
-2. STRENGTH OF STYLIZATION — 50%. Judge whether the visible demo establishes a strong, coherent, recognizable visual language. Reward deliberate, mutually reinforcing choices across relevant considerations. Penalize generic templates, timid defaults, superficial recoloring, disconnected effects, and style names unsupported by visible evidence.
+2. STRENGTH OF STYLIZATION — 50%. Judge whether the visible demo establishes a strong, coherent, recognizable visual language that remains credible for the requested domain. Reward deliberate, mutually reinforcing choices across page archetype, spatial topology, content flow, typography, imagery, container grammar, color, geometry, material, and interaction. Penalize generic templates, design-system specimen boards presented as real sites, domain-agnostic AI-default bundles, timid defaults, superficial recoloring, disconnected effects, and style names unsupported by visible evidence.
 
 Treat feasibility, accessibility, composition, distinctiveness, and consideration coverage only as evidence within those two criteria, never as extra scoring categories. A material hard-constraint violation is a gate: a violating candidate cannot outrank a compliant candidate merely for being more stylized. Return:
 
@@ -185,7 +225,7 @@ STYLE CONSIDERATIONS
 ANONYMOUS FALLBACK OBSERVATIONS
 <blind labels and fallback.md contents>
 
-Use exactly the same two-part, 50/50 rubric as the visual jury: fidelity to the user's original input and strength of stylization. Treat feasibility, accessibility, composition, distinctiveness, and consideration coverage only as evidence inside those two criteria. Lower confidence when an important point is not evidenced. A material hard-constraint violation cannot outrank a compliant candidate merely for stronger styling. Return a strict RANKING line, then for every blind ID provide one `Original-input fidelity` reason and one `Stylization strength` reason. Use each ID once. Do not output extra scoring categories, scores, ties, revisions, labels, or authorship speculation.
+Use exactly the same two-part, 50/50 rubric as the visual jury: fidelity to the user's original input and strength of stylization. Within stylization, require domain credibility and penalize generic templates, specimen boards presented as sites, and domain-agnostic AI-default bundles when the observations support them. Treat feasibility, accessibility, composition, distinctiveness, and consideration coverage only as evidence inside those two criteria. Lower confidence when an important point is not evidenced. A material hard-constraint violation cannot outrank a compliant candidate merely for stronger styling. Return a strict RANKING line, then for every blind ID provide one `Original-input fidelity` reason and one `Stylization strength` reason. Use each ID once. Do not output extra scoring categories, scores, ties, revisions, labels, or authorship speculation.
 ```
 
 ## Blindness and Vote Validation

@@ -2,16 +2,19 @@
 
 An explicit-invocation-only Agent Skill for exploring, evolving, and visually ranking style directions for websites and images. One canonical workflow supports both Codex and Claude Code through thin installation-time adapters.
 
-The Skill treats rendered artifacts as candidates: image tasks produce actual images, while web tasks produce lightweight static HTML/CSS demo pages and screenshots. It uses independent subagents for generation and judging, evolves the strongest directions with mutation and crossover, and builds a static gallery of every generated web demo.
+The Skill treats rendered artifacts as candidates: image tasks produce actual images, while web tasks produce lightweight static HTML/CSS demo pages and screenshots. It uses independent subagents for generation and judging, audits cross-candidate visual grammar, preserves both quality and structural diversity during evolution, and builds a static gallery of every generated web demo.
 
 ## Highlights
 
-- Extracts artifact-specific style considerations such as typography, color, composition, geometry, imagery, material, and interaction treatment.
+- Extracts domain archetypes, content roles, and artifact-specific style considerations such as page structure, typography, color, geometry, imagery, material, and interaction treatment.
 - Searches for fresh references instead of forcing every request into a fixed preset style.
-- Maintains concrete style labels and summaries as evolution metadata.
+- Assigns mutually exclusive structural and media search territories to initial candidates.
+- Derives screenshot-grounded style genomes after rendering instead of treating labels as novelty evidence.
+- Audits shared page skeletons, component grammar, rendering media, and AI-default bundles before voting.
 - Uses blind multi-agent ranking with two equally weighted criteria: fidelity to the original request and strength of stylization.
-- Gives mutation and crossover agents an artifact-grounded map of every previously explored style so offspring avoid near-duplicates.
-- Requires bold offspring that visibly change at least three high-impact visual axes, including one structural axis.
+- Preserves a quality champion plus structurally distinct diversity champions through deterministic genome-distance selection.
+- Gives mutation and crossover agents an artifact-grounded map of every previously explored style and its saturated compound grammar.
+- Requires offspring to rewrite page-level structure and container grammar, not merely labels, color, or decoration.
 - Produces simple static web demos and a dependency-free static gallery rather than a production application.
 
 ## Default evolution settings
@@ -85,11 +88,13 @@ evolve-visual-style/
 ├── agents/openai.yaml
 ├── references/
 │   ├── agent-prompts.md
+│   ├── diversity-control.md
 │   └── style-anchors.md
 └── scripts/
     ├── aggregate_rankings.py
     ├── build_gallery.py
-    └── sample_parents.py
+    ├── sample_parents.py
+    └── select_survivors.py
 ```
 
 No license has been specified yet.

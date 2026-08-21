@@ -1,7 +1,7 @@
 interface:
   display_name: "Evolve Visual Style"
-  short_description: "Explicit-only evolution of simple visual demos"
-  default_prompt: "Use $evolve-visual-style to create, evolve, and visually rank two boldly differentiated demo directions for my website or image, using simple static pages for web demos."
+  short_description: "Explicit-only evolution of diverse visual demos"
+  default_prompt: "Use $evolve-visual-style to create, structurally diversify, evolve, and visually rank two bold demo directions for my website or image, using simple static pages for web demos."
 
 policy:
   allow_implicit_invocation: false
